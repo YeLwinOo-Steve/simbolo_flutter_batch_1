@@ -1,4 +1,7 @@
+import 'package:basics_widgets/state_testing.dart';
 import 'package:flutter/material.dart';
+
+import 'screen_one.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,7 +18,8 @@ class MyApp extends StatelessWidget {
       //   colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       //   useMaterial3: true,
       // ),
-      home: const MyHomePage(),
+      // home: const StateTesting(),
+      home: ScreenOne(),
     );
   }
 }
@@ -46,36 +50,36 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Column(
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Container(
-                width: 200,
-                height: 200,
-                color: Colors.red.shade100,
-                child: Text(
-                  'Hello',
-                  style: TextStyle(
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold,
-                    fontStyle: FontStyle.italic,
-                    color: Colors.indigoAccent,
-                  ),
-                ),
-              ),
-              Container(
-                width: 200,
-                height: 200,
-                color: Colors.teal,
-              ),
-            ],
-          ),
-
+          // Row(
+          //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          //   children: [
+          //     Container(
+          //       width: 200,
+          //       height: 200,
+          //       color: Colors.red.shade100,
+          //       child: Text(
+          //         'Hello',
+          //         style: TextStyle(
+          //           fontSize: 30,
+          //           fontWeight: FontWeight.bold,
+          //           fontStyle: FontStyle.italic,
+          //           color: Colors.indigoAccent,
+          //         ),
+          //       ),
+          //     ),
+          //     Container(
+          //       width: 200,
+          //       height: 200,
+          //       color: Colors.teal,
+          //     ),
+          //   ],
+          // ),
           Stack(
+            alignment: Alignment.bottomCenter,
             children: [
               Container(
-                width: 50,
-                height: 50,
+                width: 300,
+                height: 300,
                 color: Colors.black,
               ),
               Container(
