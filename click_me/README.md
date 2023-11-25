@@ -12,8 +12,12 @@
 ❓ How to run this project
 
 - First install `git` commandline
-- Clone this project or download zip file
-- run `flutter run`
+  (either)
+- Clone this project `git clone https://github.com/YeLwinOo-Steve/simbolo_flutter_batch_1.git`
+  (or)
+- Download zip file
+- Navigate to `click_me` project
+- Run command `flutter run`
 
 🪶 Features
 
