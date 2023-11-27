@@ -55,59 +55,51 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
       ),
-      body: Center(
+      body: Container(
+        width: double
+            .maxFinite, // [double.maxFinite] width = 1.7976931348623157e+308
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(4.0),
+          color:
+              Theme.of(context).primaryColor.withOpacity(0.1), // transparency
+        ),
+        padding: const EdgeInsets.all(
+            20), // the space between the border and the content
+        margin: const EdgeInsets.all(12), // the space outside the border
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Container(
-              width: double
-                  .maxFinite, // [double.maxFinite] width = 1.7976931348623157e+308
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(4.0),
-                color: Theme.of(context)
-                    .primaryColor
-                    .withOpacity(0.1), // transparency
-              ),
-              padding: const EdgeInsets.all(
-                  20), // the space between the border and the content
-              margin: const EdgeInsets.all(12), // the space outside the border
-              child: Column(
-                children: [
-                  Text(
-                    'This is your Click Me post!',
-                    style: Theme.of(context).textTheme.titleMedium,
-                  ),
-                  const SizedBox(
-                    height: 100,
-                  ), // an empty container
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Text(
-                        '$_likeCounter\n 👍',
-                        style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                              color: Theme.of(context).primaryColor,
-                            ),
-                        textAlign: TextAlign.center,
+          children: [
+            Text(
+              'This is your Click Me post!',
+              style: Theme.of(context).textTheme.titleMedium,
+            ),
+            const SizedBox(
+              height: 100,
+            ), // an empty container
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Text(
+                  '$_likeCounter\n 👍',
+                  style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                        color: Theme.of(context).primaryColor,
                       ),
-                      Text(
-                        '$_loveCounter\n 💖',
-                        style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                              color: Colors.green,
-                            ),
-                        textAlign: TextAlign.center,
+                  textAlign: TextAlign.center,
+                ),
+                Text(
+                  '$_loveCounter\n 💖',
+                  style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                        color: Colors.green,
                       ),
-                      Text(
-                        '$_unlikeCounter\n 👎',
-                        style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                              color: Colors.red,
-                            ),
-                        textAlign: TextAlign.center,
+                  textAlign: TextAlign.center,
+                ),
+                Text(
+                  '$_unlikeCounter\n 👎',
+                  style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                        color: Colors.red,
                       ),
-                    ],
-                  ),
-                ],
-              ),
+                  textAlign: TextAlign.center,
+                ),
+              ],
             ),
           ],
         ),

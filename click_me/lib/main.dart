@@ -18,7 +18,9 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       initialRoute: '/',
-      onGenerateRoute: RouteGenerator.generateRoute,
+      onGenerateRoute: (settings){
+        return RouteGenerator.generateRoute(settings);
+      },
     );
   }
 }

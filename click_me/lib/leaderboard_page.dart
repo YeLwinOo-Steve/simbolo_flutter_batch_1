@@ -20,7 +20,7 @@ class LeaderboardPage extends StatelessWidget {
           children: [
             const Text('Your result'),
             Text(
-              result > 0 ? '+$result' : '$result',
+              result > 0 ? '+$result' : "$result",
               style: TextStyle(
                 fontSize: 100,
                 color: result >= 100
