@@ -5,10 +5,14 @@
 ### Assignment 
 
 📃 Add Edit Function
+
     ❓ You have to resolve all these conditions:
           1. when edit button is clicked, you can update todo item's title and description
           2. when saved, updated todo item should replace the old one
+
+
 📃 Add Delete Function
+
     ❓ You have to resolve all these conditions:
           1. when delete button is clicked, a dialog or bottom sheet or a new page should appear
           2. you'll have to confirm to delete or cancel to delete
