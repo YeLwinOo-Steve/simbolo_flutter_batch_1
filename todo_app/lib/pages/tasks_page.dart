@@ -14,8 +14,17 @@ class TasksPage extends StatelessWidget {
   final Function(TodoModel) onTodoDone;
   @override
   Widget build(BuildContext context) {
+    /// if [TodoList.todos] list is empty, show a text
+    if (TodoList.todos.isEmpty) {
+      return const Scaffold(
+        body: Center(
+          child: Text('Create a Todo Task 📃!'),
+        ),
+      );
+    }
     return Scaffold(
-      body: Center(
+      body: Padding(
+        padding: const EdgeInsets.all(6),
         child: GridView.count(
           crossAxisCount: 2,
           children: List.generate(

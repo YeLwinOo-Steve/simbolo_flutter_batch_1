@@ -1,7 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../config/todo_list.dart';
 import '../data/todo_model.dart';
+import '../widgets/info_card.dart';
 import 'completed_page.dart';
 import 'tasks_page.dart';
 
@@ -18,22 +20,82 @@ class _HomePageState extends State<HomePage> {
   ///[currentPageIndex] indicates current page index in [BottomNavigationBar] class
   int currentPageIndex = 0;
 
-  /// define a [TodoModel] list for maintaining state
-  final List<TodoModel> todoList = TodoList.todos;
-  final List<TodoModel> doneTodoList = [];
+  /// define a [TodoModel] list for maintaining temporary state
+  final List<TodoModel> tempTodoList = TodoList.todos;
 
   /// [Widget] list to show based on selected [currentPageIndex]
   void addTodo(TodoModel todo) {
     setState(() {
-      todoList.add(todo);
+      tempTodoList.add(todo);
+      TodoList.addTodo(todo);
     });
   }
 
   void doneTodo(TodoModel todo) {
     setState(() {
-      todoList.remove(todo);
-      doneTodoList.add(todo);
+      tempTodoList.remove(todo);
+      TodoList.addDoneTodo(todo.copyWith(
+        isDone: true,
+      ));
     });
+  }
+
+  void showInfoSheet() {
+    showModalBottomSheet(
+        context: context,
+        isDismissible: false,
+        constraints: BoxConstraints(
+          maxHeight: MediaQuery.sizeOf(context).height * 0.45,
+        ),
+        builder: (context) {
+          return Container(
+            width: double.maxFinite,
+            color: Colors.orange.shade100,
+            padding: const EdgeInsets.all(8),
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    Expanded(
+                        child: Text(
+                      'TODO Tasks',
+                      textAlign: TextAlign.center,
+                      style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                            color: Colors.orange,
+                          ),
+                    )),
+                    IconButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        icon: const Icon(Icons.close,
+                            size: 18, color: Colors.orange))
+                  ],
+                ),
+                Expanded(
+                  child: Center(
+                    child: Row(
+                      children: [
+                        InfoCard(
+                          label: TodoList.todos.length.toString(),
+                          bgColor: Colors.orange.shade200,
+                          textColor: Colors.orange,
+                          infoLabel: 'todo',
+                        ),
+                        InfoCard(
+                          label: TodoList.doneTodos.length.toString(),
+                          bgColor: Colors.green.shade200,
+                          textColor: Colors.green,
+                          infoLabel: 'done',
+                        ),
+                      ],
+                    ),
+                  ),
+                )
+              ],
+            ),
+          );
+        });
   }
 
   @override
@@ -45,11 +107,13 @@ class _HomePageState extends State<HomePage> {
         actions: [
           IconButton(
             style: IconButton.styleFrom(
-              backgroundColor: Colors.orange,
-              foregroundColor: Colors.amber.shade100,
+              iconSize: 28,
+              foregroundColor: Colors.orange,
             ),
-            icon: const Icon(Icons.bubble_chart_rounded),
-            onPressed: () {},
+            icon: const Icon(Icons.info),
+
+            /// shows a information bottom sheet
+            onPressed: showInfoSheet,
           )
         ],
       ),
@@ -66,10 +130,10 @@ class _HomePageState extends State<HomePage> {
         },
         children: [
           TasksPage(
-            todoList: todoList,
+            todoList: tempTodoList,
             onTodoDone: doneTodo,
           ), // index 0
-          CompletedPage(), // index 1
+          const CompletedPage(), // index 1
         ],
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
