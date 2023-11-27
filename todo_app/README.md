@@ -36,7 +36,7 @@
 - Clone this project `git clone https://github.com/YeLwinOo-Steve/simbolo_flutter_batch_1.git`
   (or)
 - Download zip file
-- Navigate to `todo` project
+- Navigate to `todo_app` project
 - Run command `flutter run`
 
 🪶 Features
