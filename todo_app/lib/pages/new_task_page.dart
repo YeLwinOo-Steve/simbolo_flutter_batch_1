@@ -16,16 +16,16 @@ class _NewTaskPageState extends State<NewTaskPage> {
   final _titleController = TextEditingController();
   final _descriptionController = TextEditingController();
   final List<String> days = [
-    "Sunday",
     "Monday",
     "Tuesday",
     "Wednesday",
     "Thursday",
     "Friday",
-    "Saturday"
+    "Saturday",
+    "Sunday",
   ];
   String weekDayToDay(int index) {
-    return days[index];
+    return days[index - 1];
   }
 
   @override
